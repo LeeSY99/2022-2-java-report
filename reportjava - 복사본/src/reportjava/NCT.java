@@ -21,7 +21,7 @@ public class NCT extends Idol{
 		
 	}
 	void printsong() {//배열의 모든 곡들 출력
-		System.out.print("타이틀 곡:");
+		System.out.print("타이틀 곡: ");
 		for (int i=0; i<songs.length; i++) {
 			if (i==songs.length-1) {
 				System.out.print(songs[i]);
