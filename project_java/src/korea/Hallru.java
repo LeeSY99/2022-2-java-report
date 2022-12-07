@@ -12,11 +12,21 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.FileWriter;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 
 import korea.Girlgroup_enum; //걸그룹 열거타입
 public class Hallru {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException{
 		// TODO Auto-generated method stub
 		System.out.println("기능을 숫자로 입력하세요"); //안내에따라 숫자를 입력하면 해당하는 정보를 출력
 		System.out.println("1. 정의");
@@ -80,7 +90,7 @@ public class Hallru {
 					if (function==1) {
 						BTS bts=new BTS("작은 것들을 위한 시",7,2013); //객체 생성 후 
 						bts.memprint();
-						Hitprint h=new Hitprint();
+						Hitprint h=new Hitprint();//매개변수의 대형성 Hitprint.java
 						h.print(bts);
 						bts.explain();
 						bts.addsong();
@@ -89,7 +99,7 @@ public class Hallru {
 					else if (function==2) {
 						NCT nct=new NCT("영웅",23,2016);
 						nct.memprint();
-						Hitprint h=new Hitprint();
+						Hitprint h=new Hitprint();//매개변수의 대형성 Hitprint.java
 						h.print(nct);
 						nct.explain();
 						nct.addsong();
@@ -132,7 +142,7 @@ public class Hallru {
 					if (girl==Girlgroup_enum.IVE) {
 						IVE ive=new IVE("ELEVEN",6,2021);
 						ive.memprint();
-						Hitprint h=new Hitprint();
+						Hitprint h=new Hitprint();//매개변수의 대형성 Hitprint.java
 						h.print(ive);
 						ive.explain();
 						ive.addsong();
@@ -142,7 +152,7 @@ public class Hallru {
 					else if(girl==Girlgroup_enum.BLACKPINK) {
 						BLACKPINK bla=new BLACKPINK("뚜두뚜두",4,2016);
 						bla.memprint();
-						Hitprint h=new Hitprint();
+						Hitprint h=new Hitprint();//매개변수의 대형성 Hitprint.java
 						h.print(bla);
 						bla.explain();
 						bla.addsong();
@@ -151,7 +161,7 @@ public class Hallru {
 					else if(girl==Girlgroup_enum.AESPA) {
 						Aespa aespa=new Aespa("Next Level",4,2020);
 						aespa.memprint();
-						Hitprint h=new Hitprint();
+						Hitprint h=new Hitprint();//매개변수의 대형성 Hitprint.java
 						h.print(aespa);
 						aespa.explain();
 						aespa.addsong();
@@ -170,7 +180,7 @@ public class Hallru {
 		
 		//}
 			else if(function ==3) {
-				List<String> dramalist = new ArrayList<>();
+				List<String> dramalist = new ArrayList<>(); //List 컬렉션
 				
 				dramalist.add("오징어 게임");
 				dramalist.add("사랑의 불시착");
@@ -185,9 +195,9 @@ public class Hallru {
 				Crash_Landing_on_You cloy= new Crash_Landing_on_You();
 				Extraordinaryy_Attorney_Woo eaw= new Extraordinaryy_Attorney_Woo();
 				
-				ex_drama.explain(squidgame);
-				ex_drama.explain(cloy);
-				ex_drama.explain(eaw);
+				ex_drama.explain(squidgame); //interface 매개변수 다형성 K_drama_explain.java
+				ex_drama.explain(cloy);//interface 매개변수 다형성 K_drama_explain.java
+				ex_drama.explain(eaw);//interface 매개변수 다형성 K_drama_explain.java
 
 				System.out.println("-------------------------------------");
 				System.out.println("추천 드라마를 추가하려면 1을 입력해 주세요.");
@@ -208,11 +218,26 @@ public class Hallru {
 					String title;
 					input=new Scanner(System.in);
 					title=input.nextLine();
-					dramalist.add(title);
-
-					System.out.println("추천 드라마 목록:");
+					
+					BufferedWriter bw= new BufferedWriter(new OutputStreamWriter(new FileOutputStream("C:\\Users\\sd39a\\OneDrive\\바탕 화면\\객체지향프로그래밍\\project_java\\src\\korea\\recomdrama.txt"),"euc-kr"));
+					bw.write(title);
+					bw.close();//파일 입출력
+					
+					System.out.println("sangyoun's 추천 드라마 목록:");
 					for(int i=0; i<dramalist.size();i++) {
 						System.out.println(dramalist.get(i));
+					}
+					System.out.println("-------------------------");
+					System.out.println("사용자 추천 드라마:");
+					
+					try {
+						BufferedReader br= new BufferedReader(new InputStreamReader(new FileInputStream("C:\\Users\\sd39a\\OneDrive\\바탕 화면\\객체지향프로그래밍\\project_java\\src\\korea\\recomdrama.txt"),"utf-8"));
+						String line=null;
+						while ((line=br.readLine())!=null) {
+							System.out.println(line);
+						}
+					}catch(FileNotFoundException e) {
+						e.printStackTrace();
 					}
 				}
 				else {
