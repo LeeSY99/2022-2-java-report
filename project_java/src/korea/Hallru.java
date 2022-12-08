@@ -218,7 +218,7 @@ public class Hallru {
 					input=new Scanner(System.in);
 					title=input.nextLine();//내용을 입력받아서 txt파일에 내용추가
 					
-					BufferedWriter bw= new BufferedWriter(new OutputStreamWriter(new FileOutputStream("\\project_java\\src\\korea\\recomdrama.txt"),"euc-kr"));
+					BufferedWriter bw= new BufferedWriter(new OutputStreamWriter(new FileOutputStream("./recomdrama.txt"),"euc-kr"));
 					bw.write(title);
 					bw.close();//파일 입출력
 					
