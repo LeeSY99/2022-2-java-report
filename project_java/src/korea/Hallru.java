@@ -217,7 +217,7 @@ public class Hallru {
 					String title;
 					input=new Scanner(System.in);
 					title=input.nextLine();//내용을 입력받아서 txt파일에 내용추가
-					
+					//상대경로를 이용해서 어디서든 현재 디렉토리에 txt파일을 생성할 수 있게 함(./)가 현제 디렉토리
 					BufferedWriter bw= new BufferedWriter(new OutputStreamWriter(new FileOutputStream("./recomdrama.txt"),"euc-kr"));
 					bw.write(title);
 					bw.close();//파일 입출력
@@ -229,7 +229,7 @@ public class Hallru {
 					System.out.println("-------------------------");
 					System.out.println("사용자 추천 드라마:");
 					
-					try {
+					try {//파일 출력은 입력과 마찬가지로 상대경로를 이용.
 						BufferedReader br= new BufferedReader(new InputStreamReader(new FileInputStream("./recomdrama.txt"),"utf-8"));
 						String line=null;
 						while ((line=br.readLine())!=null) {
