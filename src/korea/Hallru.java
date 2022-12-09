@@ -49,7 +49,6 @@ public class Hallru {
 		}
 		
 				
-		//while(function !=0) {
 			if (function==1) {
 				System.out.println("우리나라의 대중문화 요소가 외국에서 유행하는 현상. 1990년대 말에 중국, 일본, 동남아시아에서부터 비롯되었다.");
 			}//1번 입력시 정의 출력
