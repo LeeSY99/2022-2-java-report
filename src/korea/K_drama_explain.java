@@ -5,3 +5,4 @@ public class K_drama_explain {
 		drama.print();
 	}
 }
+//다형성
